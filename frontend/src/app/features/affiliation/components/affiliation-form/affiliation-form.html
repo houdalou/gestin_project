@@ -1,0 +1,349 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- ============================================================= -->
+    <!-- Identification -->
+    <!-- ============================================================= -->
+    <div class="section">
+        <h3>Identification de l'affilié</h3>
+
+        <div class="grid">
+
+            <div class="field">
+                <label>Nom *</label>
+                <input
+                    type="text"
+                    formControlName="nom"
+                    [readonly]="readonly">
+            </div>
+
+            <div class="field">
+                <label>Prénom *</label>
+                <input
+                    type="text"
+                    formControlName="prenom"
+                    [readonly]="readonly">
+            </div>
+
+            <div class="field">
+                <label>N° CNIE *</label>
+                <input
+                    type="text"
+                    formControlName="cnie"
+                    placeholder="AB123456"
+                    [readonly]="readonly">
+
+                <small *ngIf="form.get('cnie')?.touched && form.get('cnie')?.invalid">
+                    Format invalide (ex: AB123456)
+                </small>
+            </div>
+
+            <div class="field">
+                <label>Matricule TGR</label>
+                <input
+                    type="text"
+                    formControlName="matriculeTgr"
+                    [readonly]="readonly">
+            </div>
+
+            <div class="field">
+                <label>N° SOM/CNT/DDP</label>
+                <input
+                    type="text"
+                    formControlName="numeroSomCntDdp"
+                    [readonly]="readonly">
+            </div>
+
+            <div class="field">
+                <label>Date de naissance *</label>
+                <input
+                    type="text"
+                    formControlName="dateNaissance"
+                    placeholder="JJ/MM/AAAA"
+                    maxlength="10"
+                    [readonly]="readonly">
+
+                <small *ngIf="form.get('dateNaissance')?.touched && form.get('dateNaissance')?.invalid">
+                    Format attendu : JJ/MM/AAAA
+                </small>
+            </div>
+
+            <div class="field">
+                <label>Lieu de naissance</label>
+                <input
+                    type="text"
+                    formControlName="lieuNaissance"
+                    [readonly]="readonly">
+            </div>
+
+            <div class="field">
+                <label>Sexe</label>
+
+                <select
+                    formControlName="sexe"
+                    [disabled]="readonly">
+
+                    <option value="">Sélectionner</option>
+                    <option value="Homme">Homme</option>
+                    <option value="Femme">Femme</option>
+
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Situation familiale</label>
+
+                <select
+                    formControlName="situationFamiliale"
+                    [disabled]="readonly">
+
+                    <option value="">Sélectionner</option>
+                    <option value="Célibataire">Célibataire</option>
+                    <option value="Marié(e)">Marié(e)</option>
+                    <option value="Divorcé(e)">Divorcé(e)</option>
+                    <option value="Veuf/Veuve">Veuf/Veuve</option>
+
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Nationalité</label>
+                <input
+                    type="text"
+                    formControlName="nationalite"
+                    [readonly]="readonly">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Situation professionnelle -->
+    <!-- ============================================================= -->
+    <div class="section">
+        <h3>Situation professionnelle</h3>
+
+        <div class="grid">
+
+            <div class="field">
+                <label>Date de recrutement</label>
+
+                <input
+                    type="text"
+                    formControlName="dateRecrutement"
+                    placeholder="JJ/MM/AAAA"
+                    maxlength="10"
+                    [readonly]="readonly">
+
+                <small *ngIf="form.get('dateRecrutement')?.touched && form.get('dateRecrutement')?.invalid">
+                    Format attendu : JJ/MM/AAAA
+                </small>
+            </div>
+
+            <div class="field">
+                <label>Date début *</label>
+
+                <input
+                    type="text"
+                    formControlName="dateDebut"
+                    placeholder="JJ/MM/AAAA"
+                    maxlength="10"
+                    [readonly]="readonly">
+
+                <small *ngIf="form.get('dateDebut')?.touched && form.get('dateDebut')?.invalid">
+                    Format attendu : JJ/MM/AAAA
+                </small>
+            </div>
+
+            <div class="field">
+                <label>N° Matricule salarié</label>
+
+                <input
+                    type="text"
+                    formControlName="matriculeSalarie"
+                    [readonly]="readonly">
+            </div>
+
+            <div class="field">
+                <label>Régime</label>
+
+                <select
+                    formControlName="regime"
+                    [disabled]="readonly">
+
+                    <option value="">Sélectionner</option>
+                    <option *ngFor="let r of regimes" [value]="r">{{ r }}</option>
+
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Adresse -->
+    <!-- ============================================================= -->
+    <div class="section">
+        <h3>Adresse</h3>
+
+        <div class="grid">
+
+            <div class="field full">
+                <label>Adresse</label>
+
+                <input
+                    type="text"
+                    formControlName="adresse"
+                    [readonly]="readonly">
+            </div>
+
+            <div class="field">
+                <label>Quartier</label>
+
+                <input
+                    type="text"
+                    formControlName="quartier"
+                    [readonly]="readonly">
+            </div>
+
+            <div class="field">
+                <label>Code Postal</label>
+
+                <input
+                    type="text"
+                    formControlName="codePostal"
+                    placeholder="10000"
+                    maxlength="5"
+                    [readonly]="readonly">
+
+                <small *ngIf="form.get('codePostal')?.touched && form.get('codePostal')?.invalid">
+                    5 chiffres attendus
+                </small>
+            </div>
+
+            <div class="field">
+                <label>Région</label>
+
+                <select
+                    formControlName="region"
+                    [disabled]="readonly"
+                    (change)="onRegionChange()">
+
+                    <option value="">Sélectionner</option>
+                    <option *ngFor="let r of regions" [value]="r">{{ r }}</option>
+
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Province / Préfecture</label>
+
+                <select
+                    formControlName="province"
+                    [disabled]="readonly || !form.get('region')?.value"
+                    (change)="onProvinceChange()">
+
+                    <option value="">Sélectionner</option>
+                    <option *ngFor="let p of availableProvinces" [value]="p">{{ p }}</option>
+
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Ville</label>
+
+                <select
+                    formControlName="ville"
+                    [disabled]="readonly || !form.get('province')?.value">
+
+                    <option value="">Sélectionner</option>
+                    <option *ngFor="let v of availableCities" [value]="v">{{ v }}</option>
+
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Pays</label>
+
+                <select
+                    formControlName="pays"
+                    [disabled]="readonly">
+
+                    <option value="">Sélectionner</option>
+                    <option *ngFor="let p of paysList" [value]="p">{{ p }}</option>
+
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Contact -->
+    <!-- ============================================================= -->
+    <div class="section">
+        <h3>Contact</h3>
+
+        <div class="grid">
+
+            <div class="field">
+                <label>Téléphone domicile</label>
+
+                <input
+                    type="text"
+                    formControlName="telephoneDomicile"
+                    [readonly]="readonly">
+            </div>
+
+            <div class="field">
+                <label>Téléphone bureau</label>
+
+                <input
+                    type="text"
+                    formControlName="telephoneBureau"
+                    [readonly]="readonly">
+            </div>
+
+            <div class="field">
+                <label>Téléphone GSM</label>
+
+                <input
+                    type="text"
+                    formControlName="telephoneGsm"
+                    [readonly]="readonly">
+            </div>
+
+            <div class="field full">
+                <label>E-mail</label>
+
+                <input
+                    type="email"
+                    formControlName="email"
+                    [readonly]="readonly">
+
+                <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+                    Adresse e-mail invalide
+                </small>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Boutons -->
+    <!-- ============================================================= -->
+    <div class="actions" *ngIf="!readonly">
+        <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="onCancel()">
+            Annuler
+        </button>
+
+        <button
+            type="submit"
+            class="btn btn-primary">
+            Enregistrer
+        </button>
+    </div>
+
+</form>

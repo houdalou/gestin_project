@@ -1,0 +1,33 @@
+.menu {
+
+display:flex;
+justify-content:center;
+gap:40px;
+
+background:#ffffff;
+
+padding:20px;
+
+border-bottom:1px solid #ddd;
+
+}
+
+
+.menu a {
+
+text-decoration:none;
+
+color:#333;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+
+
+.menu a:hover {
+
+color:#0066cc;
+
+}

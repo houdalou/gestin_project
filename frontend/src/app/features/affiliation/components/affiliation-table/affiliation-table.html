@@ -1,0 +1,77 @@
+<div *ngIf="affiliations.length > 0; else noResults" class="table-card">
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>N° Web</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>CNIE</th>
+                <th>Matricule TGR</th>
+                <th>État</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let affiliation of affiliations">
+
+                <td>{{ affiliation.sequenceWeb }}</td>
+
+                <td>{{ affiliation.nom }}</td>
+
+                <td>{{ affiliation.prenom }}</td>
+
+                <td>{{ affiliation.cnie }}</td>
+
+                <td>{{ affiliation.matriculeTgr }}</td>
+
+                <td>
+
+                    <span
+                        class="badge"
+                        [ngClass]="affiliation.etat">
+
+                        {{ affiliation.etat }}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button
+                        type="button"
+                        (click)="onAction(affiliation)">
+
+                        {{ affiliation.etat === 'EN_COURS'
+                            ? 'Modifier'
+                            : 'Voir' }}
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<ng-template #noResults>
+
+    <div class="empty-state">
+
+        <p>Aucune affiliation trouvée pour ces critères.</p>
+
+    </div>
+
+</ng-template>

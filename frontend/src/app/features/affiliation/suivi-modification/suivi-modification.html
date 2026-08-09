@@ -1,0 +1,168 @@
+<div class="page">
+
+    <div class="header-bar">
+
+        <h2>Suivi et Modification</h2>
+
+        <button
+            type="button"
+            class="btn-new"
+            (click)="nouvelleAffiliation()">
+
+            + Nouvelle Affiliation
+
+        </button>
+
+    </div>
+
+    <form
+        class="search-card"
+        [formGroup]="searchForm"
+        (ngSubmit)="rechercher()">
+
+        <div class="grid">
+
+            <div class="field">
+                <label>N° Séquence WEB</label>
+                <input
+                    type="text"
+                    formControlName="sequenceWeb">
+            </div>
+
+            <div class="field">
+                <label>N° CNIE</label>
+                <input
+                    type="text"
+                    formControlName="cnie">
+            </div>
+
+            <div class="field">
+                <label>Matricule</label>
+                <input
+                    type="text"
+                    formControlName="matricule">
+            </div>
+
+            <div class="field">
+                <label>Nom</label>
+                <input
+                    type="text"
+                    formControlName="nom"
+                    placeholder="Nom">
+            </div>
+
+            <div class="field">
+                <label>Prénom</label>
+                <input
+                    type="text"
+                    formControlName="prenom"
+                    placeholder="Prénom">
+            </div>
+
+            <div class="field">
+                <label>Matricule TGR (N° CNT)</label>
+                <input
+                    type="text"
+                    formControlName="matriculeTgr"
+                    placeholder="N° CNT">
+            </div>
+
+            <div class="field">
+                <label>Date saisie (Début)</label>
+                <input
+                    type="date"
+                    formControlName="dateSaisieDebut">
+            </div>
+
+            <div class="field">
+                <label>Date saisie (Fin)</label>
+                <input
+                    type="date"
+                    formControlName="dateSaisieFin">
+            </div>
+
+            <div class="field">
+                <label>Statut Web</label>
+
+                <select formControlName="statut">
+
+                    <option value="">
+                        Sélectionner un statut
+                    </option>
+
+                    <option value="EN_COURS">
+                        En cours
+                    </option>
+
+                    <option value="ACCEPTEE">
+                        Acceptée
+                    </option>
+
+                    <option value="REJETEE">
+                        Rejetée
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="field">
+                <label>Date Statut (Début)</label>
+                <input
+                    type="date"
+                    formControlName="dateStatutDebut">
+            </div>
+
+            <div class="field">
+                <label>Date Statut (Fin)</label>
+                <input
+                    type="date"
+                    formControlName="dateStatutFin">
+            </div>
+
+            <div class="field">
+                <label>Date réception (Début)</label>
+                <input
+                    type="date"
+                    formControlName="dateReceptionDebut">
+            </div>
+
+            <div class="field">
+                <label>Date réception (Fin)</label>
+                <input
+                    type="date"
+                    formControlName="dateReceptionFin">
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button type="submit">
+                RECHERCHER
+            </button>
+
+        </div>
+
+    </form>
+
+    <!-- Résultats de la recherche -->
+
+    <!-- Résultats de la recherche -->
+
+<app-affiliation-table
+    *ngIf="hasSearched"
+    [affiliations]="affiliations"
+    (edit)="onEdit($event)"
+    (view)="onView($event)">
+</app-affiliation-table>
+    <!-- Formulaire d'édition / consultation -->
+    <!--
+    <app-affiliation-form
+        *ngIf="selectedAffiliation"
+        [form]="affiliationForm"
+        [readonly]="viewMode">
+    </app-affiliation-form>
+    -->
+
+</div>

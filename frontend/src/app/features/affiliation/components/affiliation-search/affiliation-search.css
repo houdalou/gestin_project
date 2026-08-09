@@ -1,0 +1,55 @@
+.search-card{
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:6px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.search-card h3{
+    margin-top:0;
+    margin-bottom:20px;
+    color:#1d3557;
+}
+
+.row{
+    display:flex;
+    gap:20px;
+    align-items:flex-end;
+    flex-wrap:wrap;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    min-width:220px;
+}
+
+.field label{
+    margin-bottom:6px;
+    font-weight:600;
+}
+
+.field input,
+.field select{
+    height:38px;
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+
+.button button{
+    height:38px;
+    min-width:140px;
+    border:none;
+    border-radius:4px;
+    background:#2e7d32;
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.button button:hover{
+    background:#1b5e20;
+}

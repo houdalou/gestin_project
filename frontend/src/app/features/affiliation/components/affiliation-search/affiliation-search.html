@@ -1,0 +1,54 @@
+<div class="search-card">
+
+    <h3>Recherche d'une affiliation</h3>
+
+    <div class="row">
+
+        <div class="field">
+
+            <label>Rechercher par</label>
+
+            <select [(ngModel)]="type">
+
+                <option value="sequenceWeb">
+                    Numéro Web
+                </option>
+
+                <option value="cnie">
+                    CNIE
+                </option>
+
+                <option value="matriculeTgr">
+                    Matricule TGR
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>Valeur</label>
+
+            <input
+                type="text"
+                [(ngModel)]="value"
+                placeholder="Saisir la valeur">
+
+        </div>
+
+        <div class="button">
+
+            <button
+                type="button"
+                (click)="onSearch()">
+
+                Rechercher
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

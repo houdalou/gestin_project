@@ -1,0 +1,39 @@
+body{
+
+    background:#f4f7f4;
+
+}
+
+.register-card{
+
+    width:900px;
+
+    border-radius:15px;
+
+}
+
+.btn-success{
+
+    background:#0B6E4F;
+
+    border:none;
+
+}
+
+.btn-success:hover{
+
+    background:#09553d;
+
+}
+
+h2{
+
+    font-weight:bold;
+
+}
+
+label{
+
+    font-weight:600;
+
+}

@@ -92,7 +92,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
 
         } catch (Exception e) {
-            // Ignore invalid or expired JWT and continue
+            e.printStackTrace();
         }
 
         filterChain.doFilter(request, response);

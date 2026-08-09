@@ -1,0 +1,311 @@
+<div class="page">
+
+    <!-- ===================================================== -->
+    <!-- HEADER -->
+    <!-- ===================================================== -->
+
+    <div class="header-bar">
+
+        <h2>Consultation</h2>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- RECHERCHE -->
+    <!-- ===================================================== -->
+
+    <form
+        class="search-card"
+        [formGroup]="searchForm"
+        (ngSubmit)="rechercher()">
+
+        <h3>Recherche d'affiliés</h3>
+
+        <div class="search-row">
+
+            <!-- Nom -->
+
+            <div class="field">
+
+                <label>Nom :</label>
+
+                <input
+                    type="text"
+                    formControlName="nom"
+                    placeholder="Nom">
+
+            </div>
+
+
+            <!-- Prénom -->
+
+            <div class="field">
+
+                <label>Prénom :</label>
+
+                <input
+                    type="text"
+                    formControlName="prenom"
+                    placeholder="Prénom">
+
+            </div>
+
+
+            <!-- CNIE -->
+
+            <div class="field">
+
+                <label>N° CNIE :</label>
+
+                <input
+                    type="text"
+                    formControlName="cnie"
+                    placeholder="CNIE">
+
+            </div>
+
+        </div>
+
+
+        <!-- Boutons -->
+
+        <div class="search-buttons">
+
+            <button
+                type="submit"
+                class="btn-search">
+
+                RECHERCHER
+
+            </button>
+
+            <button
+                type="button"
+                class="btn-reset"
+                (click)="initialiser()">
+
+                INITIALISER
+
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <!-- ===================================================== -->
+    <!-- AUCUN RÉSULTAT -->
+    <!-- ===================================================== -->
+
+    <div
+        class="empty-message"
+        *ngIf="affiliations.length === 0">
+
+        Aucun affilié trouvé
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- RÉSULTATS -->
+    <!-- ===================================================== -->
+
+    <div
+        class="results-card"
+        *ngIf="affiliations.length > 0">
+
+        <h3>Résultats de la recherche</h3>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>N° Web</th>
+
+                    <th>Nom</th>
+
+                    <th>Prénom</th>
+
+                    <th>CNIE</th>
+
+                    <th>Matricule TGR</th>
+
+                    <th>État</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr
+                    *ngFor="let affiliation of affiliations">
+
+                    <td>
+                        {{ affiliation.sequenceWeb }}
+                    </td>
+
+                    <td>
+                        {{ affiliation.nom }}
+                    </td>
+
+                    <td>
+                        {{ affiliation.prenom }}
+                    </td>
+
+                    <td>
+                        {{ affiliation.cnie }}
+                    </td>
+
+                    <td>
+                        {{ affiliation.matriculeTgr }}
+                    </td>
+
+
+                    <!-- État -->
+
+                    <td>
+
+                        <span
+                            class="status"
+                            [class.en-cours]="affiliation.etat === 'EN_COURS'"
+                            [class.acceptee]="affiliation.etat === 'ACCEPTEE'"
+                            [class.rejetee]="affiliation.etat === 'REJETEE'">
+
+                            <ng-container
+                                *ngIf="affiliation.etat === 'EN_COURS'">
+                                En cours
+                            </ng-container>
+
+                            <ng-container
+                                *ngIf="affiliation.etat === 'ACCEPTEE'">
+                                Acceptée
+                            </ng-container>
+
+                            <ng-container
+                                *ngIf="affiliation.etat === 'REJETEE'">
+                                Rejetée
+                            </ng-container>
+
+                        </span>
+
+                    </td>
+
+
+                    <!-- Voir -->
+
+                    <td>
+
+                        <button
+                            type="button"
+                            class="btn-view"
+                            (click)="voir(affiliation)">
+
+                            Voir
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- FORMULAIRE DE CONSULTATION -->
+    <!-- READ ONLY -->
+    <!-- ===================================================== -->
+
+    <div
+        id="consultation-form"
+        class="consultation-container"
+        *ngIf="selectedAffiliation">
+
+        <!-- État -->
+
+        <div class="status-card">
+
+            <div>
+
+                <strong>État de l'affiliation :</strong>
+
+                <span
+                    class="status"
+                    [class.en-cours]="selectedAffiliation.etat === 'EN_COURS'"
+                    [class.acceptee]="selectedAffiliation.etat === 'ACCEPTEE'"
+                    [class.rejetee]="selectedAffiliation.etat === 'REJETEE'">
+
+                    <ng-container
+                        *ngIf="selectedAffiliation.etat === 'EN_COURS'">
+                        En cours
+                    </ng-container>
+
+                    <ng-container
+                        *ngIf="selectedAffiliation.etat === 'ACCEPTEE'">
+                        Acceptée
+                    </ng-container>
+
+                    <ng-container
+                        *ngIf="selectedAffiliation.etat === 'REJETEE'">
+                        Rejetée
+                    </ng-container>
+
+                </span>
+
+            </div>
+
+
+            <!-- Motif uniquement si rejetée -->
+
+            <div
+                class="rejection-reason"
+                *ngIf="selectedAffiliation.etat === 'REJETEE'">
+
+                <strong>Motif du rejet :</strong>
+
+                <span>
+                    {{ selectedAffiliation.motifRejet || 'Aucun motif renseigné' }}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMULAIRE EXISTANT -->
+
+        <app-affiliation-form
+            [form]="consultationForm"
+            [readonly]="true">
+        </app-affiliation-form>
+
+
+        <!-- Fermer -->
+
+        <div class="consultation-actions">
+
+            <button
+                type="button"
+                class="btn-close"
+                (click)="fermerConsultation()">
+
+                Fermer
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

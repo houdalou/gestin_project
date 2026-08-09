@@ -1,0 +1,202 @@
+/* ==============================
+   TABLE CONTAINER
+   ============================== */
+
+.table-card {
+    width: 100%;
+
+    background: white;
+
+    border: 1px solid #e0e0e0;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+
+    box-sizing: border-box;
+}
+
+/* ==============================
+   TABLE
+   ============================== */
+
+.table-card table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: auto;
+}
+
+/* ==============================
+   HEADER
+   ============================== */
+
+.table-card thead {
+    background: #4a7a3f;
+}
+
+.table-card th {
+    padding: 14px 16px;
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+/* ==============================
+   BODY
+   ============================== */
+
+.table-card td {
+    padding: 13px 16px;
+
+    border-bottom: 1px solid #e8e8e8;
+
+    font-size: 13px;
+
+    color: #333;
+
+    white-space: nowrap;
+}
+
+.table-card tbody tr {
+    background: white;
+
+    transition: background 0.15s ease;
+}
+
+.table-card tbody tr:hover {
+    background: #f5f8f4;
+}
+
+.table-card tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ==============================
+   ETAT BADGE
+   ============================== */
+
+.badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 85px;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+}
+
+/* EN COURS */
+
+.badge.EN_COURS {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ACCEPTEE */
+
+.badge.ACCEPTEE {
+    background: #d4edda;
+    color: #155724;
+}
+
+/* REJETEE */
+
+.badge.REJETEE {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* ==============================
+   ACTION BUTTON
+   ============================== */
+
+.table-card td:last-child {
+    text-align: center;
+}
+
+.table-card button {
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 7px 14px;
+
+    background: #4a7a3f;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.1s ease;
+}
+
+.table-card button:hover {
+    background: #3c6533;
+}
+
+.table-card button:active {
+    transform: translateY(1px);
+}
+
+/* ==============================
+   EMPTY RESULT
+   ============================== */
+
+.empty-message {
+    background: white;
+
+    border: 1px solid #e0e0e0;
+
+    border-radius: 10px;
+
+    padding: 30px;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+
+@media (max-width: 900px) {
+
+    .table-card {
+        overflow-x: auto;
+    }
+
+    .table-card table {
+        min-width: 850px;
+    }
+
+}

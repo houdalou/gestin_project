@@ -1,0 +1,72 @@
+.navbar {
+    height: 70px;
+    background: linear-gradient(135deg, #2e7d32, #1b5e20) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
+}
+
+.navbar-brand {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.15s ease;
+}
+
+.navbar-brand:hover .logo {
+    transform: scale(1.03);
+}
+
+.navbar .text-white {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+.navbar .text-white i {
+    font-size: 17px;
+    margin-right: 6px;
+}
+
+.btn-light {
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 6px;
+    padding: 6px 16px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.btn-light:hover {
+    background: #f1f1f1;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.btn-light:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .navbar .ms-auto {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .navbar .text-white {
+        margin-right: 0 !important;
+    }
+}

@@ -1,0 +1,114 @@
+<div class="login-page">
+
+    <div class="card shadow-lg login-card">
+
+        <h2 class="text-center text-success mb-4">
+            Connexion
+        </h2>
+
+
+        <form 
+            [formGroup]="loginForm"
+            (ngSubmit)="login()">
+
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Nom d'utilisateur
+                </label>
+
+
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="username">
+
+
+                <div 
+                    class="text-danger mt-1"
+                    *ngIf="username?.touched && username?.hasError('required')">
+
+                    Nom d'utilisateur obligatoire
+
+                </div>
+
+
+                <div 
+                    class="text-danger mt-1"
+                    *ngIf="username?.touched && username?.hasError('minlength')">
+
+                    Minimum 3 caractères
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Mot de passe
+                </label>
+
+
+                <input
+                    type="password"
+                    class="form-control"
+                    formControlName="password">
+
+
+                <div 
+                    class="text-danger mt-1"
+                    *ngIf="password?.touched && password?.hasError('required')">
+
+                    Mot de passe obligatoire
+
+                </div>
+
+
+                <div 
+                    class="text-danger mt-1"
+                    *ngIf="password?.touched && password?.hasError('minlength')">
+
+                    Minimum 6 caractères
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="d-grid">
+
+                <button
+                    type="submit"
+                    class="btn btn-success btn-lg"
+                    [disabled]="loginForm.invalid">
+
+                    Se connecter
+
+                </button>
+
+            </div>
+
+
+
+            <div class="text-center mt-3">
+
+                <a routerLink="/register">
+                    Créer un compte
+                </a>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+</div>

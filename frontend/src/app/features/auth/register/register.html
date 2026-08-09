@@ -1,0 +1,429 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+
+    <div class="card shadow-lg p-4 register-card">
+
+
+        <h2 class="text-center mb-4 text-success">
+            Nouvelle inscription
+        </h2>
+
+
+
+        <form 
+            [formGroup]="registerForm"
+            (ngSubmit)="register()">
+
+
+
+            <div class="row">
+
+
+
+                <!-- Nom -->
+                <div class="col-md-6 mb-3">
+
+                    <label>
+                        Nom <span class="text-danger">*</span>
+                    </label>
+
+
+                    <input 
+                        class="form-control"
+                        formControlName="lastName">
+
+
+
+                    <div 
+                        class="text-danger"
+                        *ngIf="
+                        registerForm.get('lastName')?.touched &&
+                        registerForm.get('lastName')?.hasError('required')
+                        ">
+
+                        Nom obligatoire
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <!-- Prénom -->
+                <div class="col-md-6 mb-3">
+
+
+                    <label>
+                        Prénom <span class="text-danger">*</span>
+                    </label>
+
+
+                    <input 
+                        class="form-control"
+                        formControlName="firstName">
+
+
+
+                    <div 
+                        class="text-danger"
+                        *ngIf="
+                        registerForm.get('firstName')?.touched &&
+                        registerForm.get('firstName')?.hasError('required')
+                        ">
+
+                        Prénom obligatoire
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <!-- CIN -->
+                <div class="col-md-6 mb-3">
+
+
+                    <label>
+                        CIN <span class="text-danger">*</span>
+                    </label>
+
+
+                    <input 
+                        class="form-control"
+                        formControlName="cin">
+
+
+
+                    <div 
+                        class="text-danger"
+                        *ngIf="
+                        registerForm.get('cin')?.touched &&
+                        registerForm.get('cin')?.hasError('required')
+                        ">
+
+                        CIN obligatoire
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <!-- Email -->
+                <div class="col-md-6 mb-3">
+
+
+                    <label>
+                        Email <span class="text-danger">*</span>
+                    </label>
+
+
+                    <input 
+                        type="email"
+                        class="form-control"
+                        formControlName="email">
+
+
+
+                    <div 
+                        class="text-danger"
+                        *ngIf="
+                        registerForm.get('email')?.touched &&
+                        registerForm.get('email')?.hasError('required')
+                        ">
+
+                        Email obligatoire
+
+                    </div>
+
+
+
+                    <div 
+                        class="text-danger"
+                        *ngIf="
+                        registerForm.get('email')?.touched &&
+                        registerForm.get('email')?.hasError('email')
+                        ">
+
+                        Format email invalide
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <!-- Téléphone -->
+                <div class="col-md-6 mb-3">
+
+
+                    <label>
+                        Téléphone
+                    </label>
+
+
+                    <input 
+                        class="form-control"
+                        formControlName="phone">
+
+
+                </div>
+
+
+
+
+
+                <!-- Ville -->
+                <div class="col-md-6 mb-3">
+
+
+                    <label>
+                        Ville
+                    </label>
+
+
+                    <input 
+                        class="form-control"
+                        formControlName="city">
+
+
+                </div>
+
+
+
+
+
+                <!-- Adresse -->
+                <div class="col-12 mb-3">
+
+
+                    <label>
+                        Adresse
+                    </label>
+
+
+                    <input 
+                        class="form-control"
+                        formControlName="address">
+
+
+                </div>
+
+
+
+
+
+                <!-- Username -->
+                <div class="col-md-6 mb-3">
+
+
+                    <label>
+                        Nom d'utilisateur <span class="text-danger">*</span>
+                    </label>
+
+
+                    <input 
+                        class="form-control"
+                        formControlName="username">
+
+
+
+                    <div 
+                        class="text-danger"
+                        *ngIf="
+                        registerForm.get('username')?.touched &&
+                        registerForm.get('username')?.hasError('required')
+                        ">
+
+                        Nom d'utilisateur obligatoire
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <!-- Password -->
+                <div class="col-md-6 mb-3">
+
+
+                    <label>
+                        Mot de passe <span class="text-danger">*</span>
+                    </label>
+
+
+                    <input 
+                        type="password"
+                        class="form-control"
+                        formControlName="password">
+
+
+
+                    <div 
+                        class="text-danger"
+                        *ngIf="
+                        registerForm.get('password')?.touched &&
+                        registerForm.get('password')?.hasError('required')
+                        ">
+
+                        Mot de passe obligatoire
+
+                    </div>
+
+
+
+                    <div 
+                        class="text-danger"
+                        *ngIf="
+                        registerForm.get('password')?.touched &&
+                        registerForm.get('password')?.hasError('minlength')
+                        ">
+
+                        Minimum 8 caractères
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <!-- Confirm Password -->
+                <div class="col-md-6 mb-4">
+
+
+                    <label>
+                        Confirmer le mot de passe 
+                        <span class="text-danger">*</span>
+                    </label>
+
+
+                    <input 
+                        type="password"
+                        class="form-control"
+                        formControlName="confirmPassword">
+
+
+
+                    <div 
+                        class="text-danger"
+                        *ngIf="
+                        confirmPassword?.touched &&
+                        confirmPassword?.hasError('required')
+                        ">
+
+                        Confirmation obligatoire
+
+                    </div>
+
+
+
+                    <div 
+                        class="text-danger"
+                        *ngIf="
+                        confirmPassword?.touched &&
+                        registerForm.hasError('passwordMismatch')
+                        ">
+
+                        Les mots de passe ne correspondent pas
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            <div class="d-grid">
+
+
+                <button 
+                    type="submit"
+                    class="btn btn-success btn-lg"
+                    [disabled]="registerForm.invalid">
+
+
+                    S'inscrire
+
+
+                </button>
+
+
+            </div>
+
+
+
+
+
+            <div class="text-center mt-3">
+
+
+                <a routerLink="/login">
+
+                    Déjà un compte ? Se connecter
+
+                </a>
+
+
+            </div>
+
+
+
+
+
+            <div 
+                *ngIf="message"
+                class="alert alert-success mt-3">
+
+
+                {{message}}
+
+
+            </div>
+
+
+
+
+
+            <div 
+                *ngIf="error"
+                class="alert alert-danger mt-3">
+
+
+                {{error}}
+
+
+            </div>
+
+
+
+        </form>
+
+
+    </div>
+
+
+</div>

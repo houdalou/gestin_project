@@ -1,0 +1,105 @@
+<div class="page">
+
+  <div class="header-bar">
+
+    <h2>
+      {{ readonly ? 'Consultation de l’affiliation' : 'Modification de l’affiliation' }}
+    </h2>
+
+    <button
+      type="button"
+      class="btn-back"
+      (click)="onFormCancel()">
+
+      ← Retour
+
+    </button>
+
+  </div>
+
+
+  <!-- Chargement -->
+
+  <div
+    class="loading"
+    *ngIf="loading">
+
+    Chargement de l'affiliation...
+
+  </div>
+
+
+  <!-- Affiliation trouvée -->
+
+  <div
+    class="content"
+    *ngIf="!loading && affiliation">
+
+    <div class="status-card">
+
+      <div>
+
+        <span class="label">
+          N° Séquence WEB
+        </span>
+
+        <strong>
+          {{ affiliation.sequenceWeb }}
+        </strong>
+
+      </div>
+
+      <div>
+
+        <span class="label">
+          État
+        </span>
+
+        <span
+          class="status"
+          [class.en-cours]="affiliation.etat === 'EN_COURS'"
+          [class.acceptee]="affiliation.etat === 'ACCEPTEE'"
+          [class.rejetee]="affiliation.etat === 'REJETEE'">
+
+          {{ affiliation.etat }}
+
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <app-affiliation-form
+      [form]="affiliationForm"
+      [readonly]="readonly"
+      (formSubmit)="onFormSubmit()"
+      (formCancel)="onFormCancel()">
+    </app-affiliation-form>
+
+  </div>
+
+
+  <!-- Erreur -->
+
+  <div
+    class="not-found"
+    *ngIf="!loading && !affiliation">
+
+    <h3>Affiliation introuvable</h3>
+
+    <p>
+      Impossible de charger cette affiliation.
+    </p>
+
+    <button
+      type="button"
+      (click)="onFormCancel()">
+
+      Retour
+
+    </button>
+
+  </div>
+
+</div>

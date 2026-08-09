@@ -1,0 +1,9 @@
+<div class="page">
+
+    <h2>Nouvelle Affiliation</h2>
+
+    <app-affiliation-form
+    [form]="affiliationForm"
+    (formSubmit)="save()"
+    (formCancel)="resetForm()">
+</app-affiliation-form>
